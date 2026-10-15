@@ -43,6 +43,15 @@ export function AuthProvider({ children }) {
     [loadMe],
   )
 
+  const register = useCallback(
+    async (fields) => {
+      const data = await api('/auth/register/', { method: 'POST', body: fields, auth: false })
+      tokens.set({ access: data.access, refresh: data.refresh })
+      return loadMe()
+    },
+    [loadMe],
+  )
+
   const changePassword = useCallback(
     async (oldPassword, newPassword) => {
       const data = await api('/auth/password/', {
@@ -56,8 +65,8 @@ export function AuthProvider({ children }) {
   )
 
   const value = useMemo(
-    () => ({ user, status, login, logout, changePassword, reload: loadMe }),
-    [user, status, login, logout, changePassword, loadMe],
+    () => ({ user, status, login, register, logout, changePassword, reload: loadMe }),
+    [user, status, login, register, logout, changePassword, loadMe],
   )
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

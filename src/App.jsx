@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './auth'
 import Layout from './Layout'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import ChangePassword from './pages/ChangePassword'
 import Libraries from './pages/Libraries'
 import Explore from './pages/Explore'
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/password" element={<ChangePassword />} />
       <Route path="/" element={<Protected><Libraries /></Protected>} />
       <Route path="/explore" element={<Protected><Explore /></Protected>} />
