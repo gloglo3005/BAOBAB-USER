@@ -25,12 +25,12 @@ export default function Login() {
       <form className="card auth-card" onSubmit={submit}>
         <div className="brand"><img src="/favicon.svg" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
         <h2>Connexion</h2>
-        <p className="muted">Consultez vos prÃªts et le catalogue de vos bibliothÃ¨ques.</p>
+        <p className="muted">Consultez vos prêts et le catalogue de vos bibliothèques.</p>
         <ErrorBox>{error}</ErrorBox>
-        <Field label="Email"><input type="email" required autoFocus value={email} onChange={(e) => setEmail(e.target.value)} /></Field>
+        <Field label="Email"><input type="email" autoCapitalize="none" autoCorrect="off" spellCheck={false} required autoFocus value={email} onChange={(e) => setEmail(e.target.value)} /></Field>
         <Field label="Mot de passe"><input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></Field>
-        <button className="btn" disabled={busy} style={{ width: '100%' }}>{busy ? 'Connexionâ€¦' : 'Se connecter'}</button>
-        <p className="muted" style={{ textAlign: 'center', marginTop: '1rem' }}>Pas encore de compte ? <Link to="/register">CrÃ©er un compte</Link></p>
+        <button className="btn" disabled={busy} style={{ width: '100%' }}>{busy ? 'Connexion…' : 'Se connecter'}</button>
+        <p className="muted" style={{ textAlign: 'center', marginTop: '1rem' }}>Pas encore de compte ? <Link to="/register">Créer un compte</Link></p>
       </form>
     </div>
   )

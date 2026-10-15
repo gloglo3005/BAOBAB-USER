@@ -11,7 +11,12 @@ import LibraryHome from './pages/LibraryHome'
 import Catalog from './pages/Catalog'
 import BookDetail from './pages/BookDetail'
 import MyLoans from './pages/MyLoans'
-import { Loading } from './ui'
+import Coworking from './pages/Coworking'
+import CwSpace from './pages/CwSpace'
+import CwHome from './pages/CwHome'
+import CwBook from './pages/CwBook'
+import CwMine from './pages/CwMine'
+import { Loading, NotFound } from './ui'
 
 function Protected({ children }) {
   const { user, status } = useAuth()
@@ -35,7 +40,13 @@ export default function App() {
         <Route path="catalog/:bookId" element={<BookDetail />} />
         <Route path="loans" element={<MyLoans />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/coworking" element={<Protected><Coworking /></Protected>} />
+      <Route path="/c/:orgId" element={<Protected><CwSpace /></Protected>}>
+        <Route index element={<CwHome />} />
+        <Route path="book" element={<CwBook />} />
+        <Route path="mine" element={<CwMine />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useOutletContext } from 'react-router-dom'
 import { get } from '../api'
-import { Empty, ErrorBox, Loading, Pager, rows, useFetch } from '../ui'
+import { Empty, ErrorBox, Loading, Pager, rows, useDebounced, useFetch } from '../ui'
 
 export default function Catalog() {
   const { memberId } = useOutletContext()
@@ -9,10 +9,11 @@ export default function Catalog() {
   const [category, setCategory] = useState('')
   const [available, setAvailable] = useState(false)
   const [page, setPage] = useState(1)
+  const dq = useDebounced(q)
   const cats = useFetch(() => get(`/reader/${memberId}/categories/`), [memberId])
   const { data, loading, error } = useFetch(
-    () => get(`/reader/${memberId}/books/`, { q, category, available: available ? '1' : undefined, page }),
-    [memberId, q, category, available, page],
+    () => get(`/reader/${memberId}/books/`, { q: dq, category, available: available ? '1' : undefined, page }),
+    [memberId, dq, category, available, page],
   )
   const books = rows(data)
   return (

@@ -14,11 +14,11 @@ Le backend Django doit tourner sur `http://localhost:8000`. Le port 3000 est aut
 dans `CORS_ALLOWED_ORIGINS`.
 
 ## Fonctionnalités
-- Connexion (JWT) et changement de mot de passe obligatoire.
+- Inscription, connexion (JWT) et changement de mot de passe obligatoire.
 - Mes bibliothèques : adhésions et leur statut, code de rattachement.
 - Explorer : liste des bibliothèques, demande d'adhésion.
+- Coworking : liste des espaces, présentation (horaires, règles, ressources, tarifs), création de ma fiche client, disponibilités, réservation, annulation, mes passages et paiements.
 - Par bibliothèque : accueil (prêts à venir), catalogue (recherche, catégorie, disponibilité), détail d'un livre, mes prêts.
 
 ## Limites actuelles du backend
-- Pas de route d'inscription : les comptes lecteurs sont créés ailleurs (admin Django ou formulaire `/reader/inscription/`).
-- Pas de routes lecteur pour le coworking.
+- Pas de « mot de passe oublié » ni de profil modifiable (routes backend à venir).

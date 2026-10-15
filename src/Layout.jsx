@@ -10,6 +10,7 @@ export default function Layout({ children }) {
           <div className="brand"><img src="/favicon.svg" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
           <nav className="topnav">
             <NavLink to="/" end>Mes bibliothèques</NavLink>
+            <NavLink to="/coworking">Coworking</NavLink>
             <NavLink to="/explore">Explorer</NavLink>
           </nav>
           <span style={{ fontSize: '.85rem' }}>{user.first_name || user.email}</span>
