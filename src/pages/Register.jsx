@@ -52,7 +52,7 @@ export default function Register() {
   return (
     <div className="auth-page">
       <form className="card auth-card" onSubmit={submit} style={{ width: 'min(480px, 100%)' }}>
-        <div className="brand"><img src="/favicon.svg" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
+        <div className="auth-logo"><img src="/logo.png" alt="Baobab" /><small>Espace lecteur</small></div>
         <h2>Créer mon compte</h2>
         <p className="muted">Ensuite, vous choisirez votre bibliothèque.</p>
         <ErrorBox>{error}</ErrorBox>

@@ -11,7 +11,7 @@ export default function Layout({ children }) {
     <>
       <header className="topbar">
         <div className="topbar-in">
-          <div className="brand"><img src="/favicon.svg" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
+          <div className="brand"><img src="/favicon.png" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
           <nav className="topnav">
             <NavLink to="/" end>Mes bibliothèques</NavLink>
             <NavLink to="/coworking">Coworking</NavLink>

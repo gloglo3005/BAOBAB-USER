@@ -182,3 +182,10 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--green-600);
 .legal-card { width: min(680px, 100%); }
 .legal-card h1 { font-size: 1.4rem; font-family: inherit; }
 .legal-card h2 { font-size: 1.05rem; margin-top: 1.5rem; }
+
+/* Logo Baobab */
+.auth-logo { display: flex; flex-direction: column; align-items: center; gap: .4rem; margin-bottom: 1rem; }
+.auth-logo img { width: 128px; height: 128px; border-radius: 22px; box-shadow: 0 6px 18px rgba(22, 58, 43, .25); }
+.auth-logo small { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.brand img { border-radius: 8px; }
+.error-logo { border-radius: 12px; }

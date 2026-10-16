@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <div className="auth-page">
       <form className="card auth-card" onSubmit={submit}>
-        <div className="brand"><img src="/favicon.svg" alt="" /><div>Baobab<small>Espace lecteur</small></div></div>
+        <div className="auth-logo"><img src="/logo.png" alt="Baobab" /><small>Espace lecteur</small></div>
         <h2>Connexion</h2>
         <p className="muted">Consultez vos prêts et le catalogue de vos bibliothèques.</p>
         <ErrorBox>{error}</ErrorBox>
