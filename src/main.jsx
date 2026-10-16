@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { AuthProvider } from './auth'
 import { ErrorBoundary } from './ui'
+import NetStatus from './NetStatus'
+import CookieNotice from './CookieNotice'
 import './index.css'
 import './responsive.css'
 import { registerPwa } from './pwa'
@@ -16,6 +18,8 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
       <AuthProvider>
         <App />
+        <NetStatus />
+        <CookieNotice />
       </AuthProvider>
     </BrowserRouter>
   </ErrorBoundary>

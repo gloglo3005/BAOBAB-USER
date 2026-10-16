@@ -1,4 +1,6 @@
 // Client HTTP minimal pour l'API Django : JWT + renouvellement automatique.
+import { cacheClear, cacheGet, cacheSet, markFromCache, offlineMessage, trackRequest } from './offline'
+
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1').replace(/\/$/, '')
 const STORAGE_KEY = 'baobab-user.tokens'
 
@@ -26,6 +28,7 @@ export const tokens = {
     }
   },
   clear() {
+    cacheClear()
     try {
       localStorage.removeItem(STORAGE_KEY)
     } catch {
@@ -85,6 +88,7 @@ export async function api(path, { method = 'GET', body, params, auth = true } = 
   if (body !== undefined) headers['Content-Type'] = 'application/json'
   if (auth && tokens.get()?.access) headers.Authorization = `Bearer ${tokens.get().access}`
   let res
+  const done = trackRequest()
   try {
     res = await fetch(buildUrl(path, params), {
       method,
@@ -92,8 +96,17 @@ export async function api(path, { method = 'GET', body, params, auth = true } = 
       body: body !== undefined ? JSON.stringify(body) : undefined,
     })
   } catch {
-    throw new ApiError(0, { detail: "Impossible de joindre l'API. Le serveur Django est-il lancé ?" })
+    done()
+    if (method === 'GET') {
+      const hit = cacheGet(path, params)
+      if (hit) {
+        markFromCache(true)
+        return hit.data
+      }
+    }
+    throw new ApiError(0, { detail: offlineMessage(method) })
   }
+  done()
   if (res.status === 401 && auth && retry && (await refreshAccess())) {
     return api(path, { method, body, params, auth }, false)
   }
@@ -108,6 +121,10 @@ export async function api(path, { method = 'GET', body, params, auth = true } = 
   if (!res.ok) {
     if (res.status === 401 && auth) window.dispatchEvent(new Event('baobab:unauthorized'))
     throw new ApiError(res.status, data)
+  }
+  if (method === 'GET') {
+    cacheSet(path, params, data)
+    markFromCache(false)
   }
   return data
 }
