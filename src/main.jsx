@@ -5,6 +5,10 @@ import App from './App.jsx'
 import { AuthProvider } from './auth'
 import { ErrorBoundary } from './ui'
 import './index.css'
+import './responsive.css'
+import { registerPwa } from './pwa'
+
+registerPwa()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import InstallApp from '../InstallApp'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth'
 import { ErrorBox, Field, useAction } from '../ui'
@@ -30,6 +31,7 @@ export default function Login() {
         <Field label="Email"><input type="email" autoCapitalize="none" autoCorrect="off" spellCheck={false} required autoFocus value={email} onChange={(e) => setEmail(e.target.value)} /></Field>
         <Field label="Mot de passe"><input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></Field>
         <button className="btn" disabled={busy} style={{ width: '100%' }}>{busy ? 'Connexion…' : 'Se connecter'}</button>
+        <div style={{ textAlign: 'center', marginTop: '.8rem' }}><InstallApp /></div>
         <p className="muted" style={{ textAlign: 'center', marginTop: '1rem' }}>Pas encore de compte ? <Link to="/register">Créer un compte</Link></p>
       </form>
     </div>
