@@ -50,7 +50,7 @@ export default function Register() {
   }
 
   return (
-    <div className="auth-page">
+    <div className="auth-page auth-split">
       <form className="card auth-card" onSubmit={submit} style={{ width: 'min(480px, 100%)' }}>
         <div className="auth-logo"><img src="/logo.png" alt="Baobab" /><small>Espace lecteur</small></div>
         <h2>Créer mon compte</h2>
