@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth'
-import { ErrorBox, Field } from '../ui'
+import { ErrorBox, Field, PasswordInput, usePageTitle } from '../ui'
 
 const EMPTY = { first_name: '', last_name: '', email: '', phone: '', password1: '', password2: '' }
 
@@ -17,6 +17,7 @@ export default function Register() {
   const navigate = useNavigate()
   const [f, setF] = useState(EMPTY)
   const [fieldErrors, setFieldErrors] = useState(null)
+  usePageTitle('Créer un compte')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
 
@@ -62,8 +63,8 @@ export default function Register() {
         </div>
         <Field label="Adresse email"><input type="email" autoCapitalize="none" autoCorrect="off" spellCheck={false} required autoComplete="email" value={f.email} onChange={set('email')} /><FieldErrors errors={fieldErrors} name="email" /></Field>
         <Field label="Téléphone (facultatif)"><input autoComplete="tel" inputMode="tel" value={f.phone} onChange={set('phone')} /><FieldErrors errors={fieldErrors} name="phone" /></Field>
-        <Field label="Mot de passe" hint="8 caractères minimum, pas trop courant, pas uniquement des chiffres."><input type="password" required autoComplete="new-password" value={f.password1} onChange={set('password1')} /><FieldErrors errors={fieldErrors} name="password1" /></Field>
-        <Field label="Confirmer le mot de passe"><input type="password" required autoComplete="new-password" value={f.password2} onChange={set('password2')} /><FieldErrors errors={fieldErrors} name="password2" /></Field>
+        <Field label="Mot de passe" hint="8 caractères minimum, pas trop courant, pas uniquement des chiffres."><PasswordInput required autoComplete="new-password" value={f.password1} onChange={set('password1')} /><FieldErrors errors={fieldErrors} name="password1" /></Field>
+        <Field label="Confirmer le mot de passe"><PasswordInput required autoComplete="new-password" value={f.password2} onChange={set('password2')} /><FieldErrors errors={fieldErrors} name="password2" /></Field>
         <button className="btn" disabled={busy} style={{ width: '100%' }}>{busy ? 'Création…' : 'Créer mon compte'}</button>
         <p className="muted" style={{ textAlign: 'center', marginTop: '1rem' }}>Déjà un compte ? <Link to="/login">Se connecter</Link></p>
       </form>

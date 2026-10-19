@@ -5,6 +5,7 @@ import Layout from './Layout'
 import Login from './pages/Login'
 const Register = lazy(() => import('./pages/Register'))
 const ChangePassword = lazy(() => import('./pages/ChangePassword'))
+const Account = lazy(() => import('./pages/Account'))
 const Libraries = lazy(() => import('./pages/Libraries'))
 const PublicHome = lazy(() => import('./pages/PublicHome'))
 const Explore = lazy(() => import('./pages/Explore'))
@@ -45,6 +46,7 @@ export default function App() {
       <Route path="/password" element={<ChangePassword />} />
       <Route path="/" element={<Root />} />
       <Route path="/explore" element={<Protected><Explore /></Protected>} />
+      <Route path="/settings" element={<Protected><Account /></Protected>} />
       <Route path="/l/:memberId" element={<Protected><LibrarySpace /></Protected>}>
         <Route index element={<LibraryHome />} />
         <Route path="catalog" element={<Catalog />} />

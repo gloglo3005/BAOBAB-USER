@@ -149,8 +149,20 @@
 .pb-nav a { display: inline-flex; align-items: center; min-height: 44px; }
 .pb-menu > a { display: flex; align-items: center; min-height: 48px; }
 
+/* Theme choisi par l'utilisateur : la page publique suit aussi le choix clair / sombre */
+:root[data-theme="light"] .pb { --pb-sage-line: #cfdac8; --pb-shadow: 0 14px 34px rgba(22, 58, 43, .1); }
+:root[data-theme="dark"] .pb { --pb-sage-line: #2c3d31; --pb-shadow: 0 14px 34px rgba(0, 0, 0, .35); }
+
+/* Theme choisi par l'utilisateur : memes ajustements que le mode sombre du systeme */
+:root[data-theme="dark"] .pb-brand, :root[data-theme="dark"] .pb-hero h1, :root[data-theme="dark"] .pb-ph { color: var(--text); }
+:root[data-theme="dark"] .pb-tag.soon { color: #e8bd7a; }
+:root[data-theme="light"] .pb-brand, :root[data-theme="light"] .pb-hero h1 { color: var(--green-900); }
+:root[data-theme="light"] .pb-ph { color: var(--green-800); }
+:root[data-theme="light"] .pb-tag.soon { color: #7a4f10; }
+
 /* Mode sombre : contrastes corriges */
 @media (prefers-color-scheme: dark) {
-  .pb-ico, .pb-tag.ok, .pb-nav a:hover { color: var(--link, #6fc49a); }
+  :root:not([data-theme="light"]) :is(.pb-ico, .pb-tag.ok, .pb-nav a:hover) { color: var(--link); }
 }
+:root[data-theme="dark"] :is(.pb-ico, .pb-tag.ok, .pb-nav a:hover) { color: var(--link); }
 /* <<< baobab-ui-v2 <<< */
