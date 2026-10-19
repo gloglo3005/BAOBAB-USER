@@ -128,7 +128,7 @@
 .pb-footer p { margin: .6rem 0 0; font-size: .92rem; max-width: 26em; }
 .pb-footer nav { display: grid; gap: .5rem; align-content: start; }
 .pb-footer nav a { color: #dbe6de; font-size: .94rem; }
-.pb-footer nav a:hover { text-decoration: underline; }
+.pb-footer nav a:hover { text-decoration: none; }
 .pb-copy { max-width: 1200px; margin: 1.6rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .12); font-size: .85rem; }
 .pb-final { padding-top: 0; }
 
@@ -165,4 +165,9 @@
   :root:not([data-theme="light"]) :is(.pb-ico, .pb-tag.ok, .pb-nav a:hover) { color: var(--link); }
 }
 :root[data-theme="dark"] :is(.pb-ico, .pb-tag.ok, .pb-nav a:hover) { color: var(--link); }
+/* Liens : jamais soulignes (texte simple, bouton, carte, menu), quel que soit l'etat */
+a, a:link, a:visited, a:hover, a:focus, a:focus-visible, a:active,
+.linklike, .linklike:hover, .linklike:focus {
+  text-decoration: none !important;
+}
 /* <<< baobab-ui-v2 <<< */
