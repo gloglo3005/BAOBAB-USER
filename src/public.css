@@ -2,10 +2,10 @@
    Page publique de Baobab (avant connexion). Préfixe pb-.
    Palette : vert forêt, vert sauge, beige crème, ivoire, brun bois, anthracite.
    ========================================================================== */
-.pb { --pb-sage: #e5ecdf; --pb-sage-line: #cfdac8; --pb-ivory: #fffdf7; --pb-wood: #8a5a35; --pb-shadow: 0 14px 34px rgba(22, 58, 43, .1);
+.pb { --pb-sage: var(--sage, #e5ecdf); --pb-sage-line: #cfdac8; --pb-ivory: var(--ivory, #fffdf7); --pb-wood: var(--wood, #8a5a35); --pb-shadow: 0 14px 34px rgba(22, 58, 43, .1);
   color: var(--text); overflow-x: clip; scroll-padding-top: 76px; }
 @media (prefers-color-scheme: dark) {
-  .pb { --pb-sage: #1c2a21; --pb-sage-line: #2c3d31; --pb-ivory: #19221c; --pb-wood: #c9955f; --pb-shadow: 0 14px 34px rgba(0, 0, 0, .35); }
+  .pb { --pb-sage: var(--sage, #1c2a21); --pb-sage-line: #2c3d31; --pb-ivory: var(--ivory, #19221c); --pb-wood: var(--wood, #c9955f); --pb-shadow: 0 14px 34px rgba(0, 0, 0, .35); }
 }
 .pb a { text-decoration: none; }
 .pb :focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; }
@@ -117,14 +117,14 @@
 @media (max-width: 700px) { .pb-now { grid-template-columns: 1fr; } }
 
 /* Appel à l'action et pied de page */
-.pb-band { max-width: 980px; margin: 0 auto; text-align: center; background: var(--green-900); color: #f4efe2; border-radius: 26px; padding: clamp(2rem, 6vw, 3.6rem) clamp(1.2rem, 4vw, 3rem); box-shadow: 0 22px 46px rgba(22, 58, 43, .28); }
-.pb-band h2 { color: #f4efe2; font-size: clamp(1.5rem, 3.4vw, 2.3rem); }
+.pb-band { max-width: 980px; margin: 0 auto; text-align: center; background: var(--green-900); color: var(--cream, #f4efe2); border-radius: 26px; padding: clamp(2rem, 6vw, 3.6rem) clamp(1.2rem, 4vw, 3rem); box-shadow: 0 22px 46px rgba(22, 58, 43, .28); }
+.pb-band h2 { color: var(--cream, #f4efe2); font-size: clamp(1.5rem, 3.4vw, 2.3rem); }
 .pb-band p { color: #cddbd1; margin: .8rem auto 1.6rem; max-width: 34em; line-height: 1.6; }
-.pb-ghost-light { background: transparent; color: #f4efe2; border-color: rgba(255, 255, 255, .4); }
+.pb-ghost-light { background: transparent; color: var(--cream, #f4efe2); border-color: rgba(255, 255, 255, .4); }
 .pb-ghost-light:hover { background: rgba(255, 255, 255, .1); }
 .pb-footer { background: var(--green-900); color: #b9cbbf; padding: 2.4rem clamp(1rem, 4vw, 2rem) calc(1.2rem + env(safe-area-inset-bottom)); }
 .pb-foot-in { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; }
-.pb-footer .pb-brand { color: #f4efe2; }
+.pb-footer .pb-brand { color: var(--cream, #f4efe2); }
 .pb-footer p { margin: .6rem 0 0; font-size: .92rem; max-width: 26em; }
 .pb-footer nav { display: grid; gap: .5rem; align-content: start; }
 .pb-footer nav a { color: #dbe6de; font-size: .94rem; }
@@ -143,3 +143,14 @@
 .pb-about .pb-banner { max-width: none; margin: 0 0 2.2rem; }
 @media (max-width: 700px) { .pb-banner { aspect-ratio: 16 / 9; border-radius: 16px; } }
 .pb-band.pb-band-photo { background: linear-gradient(rgba(14, 40, 29, .6), rgba(14, 40, 29, .82)), url('/images/baobab-grove.webp') center 55% / cover no-repeat, var(--green-900); }
+
+/* >>> baobab-ui-v2 (genere par Update-BaobabUi.ps1, ne pas modifier a la main) >>> */
+/* Cibles tactiles confortables dans l'en-tete et le menu */
+.pb-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.pb-menu > a { display: flex; align-items: center; min-height: 48px; }
+
+/* Mode sombre : contrastes corriges */
+@media (prefers-color-scheme: dark) {
+  .pb-ico, .pb-tag.ok, .pb-nav a:hover { color: var(--link, #6fc49a); }
+}
+/* <<< baobab-ui-v2 <<< */
