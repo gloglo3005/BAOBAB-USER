@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { get } from '../api'
-import { ErrorBox, Loading, PageHeader, useFetch } from '../ui'
+import { ErrorBox, Loading, useFetch } from '../ui'
+import PageBanner from '../PageBanner'
 
 // Espace d'une bibliothèque : charge le résumé (vérifie aussi l'accès du lecteur).
 export default function LibrarySpace() {
@@ -12,7 +13,7 @@ export default function LibrarySpace() {
   const base = `/l/${memberId}`
   return (
     <>
-      <PageHeader title={s.organization.name} subtitle={`${s.member.first_name} ${s.member.last_name} · membre n° ${s.member.member_number}`} />
+      <PageBanner title={s.organization.name} subtitle={`${s.member.first_name} ${s.member.last_name} · membre n° ${s.member.member_number}`} image="/images/catalogue.webp" />
       <nav className="subnav">
         <NavLink to={base} end>Accueil</NavLink>
         <NavLink to={`${base}/catalog`}>Catalogue</NavLink>

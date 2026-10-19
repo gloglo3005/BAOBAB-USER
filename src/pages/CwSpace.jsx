@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { get } from '../api'
-import { ErrorBox, Loading, PageHeader, useFetch } from '../ui'
+import { ErrorBox, Loading, useFetch } from '../ui'
+import PageBanner from '../PageBanner'
 
 // Espace d'un coworking : charge la présentation et ma fiche client, puis affiche les sous-pages.
 export default function CwSpace() {
@@ -12,7 +13,7 @@ export default function CwSpace() {
   const base = `/c/${orgId}`
   return (
     <>
-      <PageHeader title={s.organization.name} subtitle={[s.organization.city, s.organization.country].filter(Boolean).join(', ')} />
+      <PageBanner title={s.organization.name} subtitle={[s.organization.city, s.organization.country].filter(Boolean).join(', ')} image="/images/coworking.webp" position="center 60%" />
       <nav className="subnav">
         <NavLink to={base} end>Présentation</NavLink>
         <NavLink to={`${base}/book`}>Réserver</NavLink>

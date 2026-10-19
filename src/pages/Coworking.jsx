@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { get } from '../api'
-import { Badge, Empty, ErrorBox, Loading, PageHeader, Pager, rows, useDebounced, useFetch } from '../ui'
+import { Badge, Empty, ErrorBox, Loading, Pager, rows, useDebounced, useFetch } from '../ui'
+import PageBanner from '../PageBanner'
 
 // Liste des espaces de coworking disponibles.
 export default function Coworking() {
@@ -12,7 +13,7 @@ export default function Coworking() {
   const list = rows(data)
   return (
     <>
-      <PageHeader title="Coworking" subtitle="Réservez un poste de travail ou une salle" />
+      <PageBanner title="Coworking" subtitle="Réservez un poste de travail ou une salle" image="/images/coworking.webp" position="center 60%" />
       <div className="toolbar"><input type="search" placeholder="Nom ou ville…" value={q} onChange={(e) => { setQ(e.target.value); setPage(1) }} /></div>
       <ErrorBox>{error}</ErrorBox>
       {loading && <Loading />}

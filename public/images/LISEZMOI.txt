@@ -1,0 +1,20 @@
+PHOTOS DE L'APPLICATION BAOBAB
+===============================
+
+Ce dossier contient les photos réelles utilisées par l'application (plus aucun dessin ni image générée).
+
+  hero.webp           Accueil public : bannière (étagères lumineuses)
+  livres.webp         Accueil public : section « Explorer les livres »
+  bibliotheques.webp  Accueil public : bandeau « Découvrez les bibliothèques » + page Explorer
+  coworking.webp      Accueil public, page Coworking et fiche d'un espace
+  apprendre.webp      Accueil public : section « Apprendre, découvrir, travailler »
+  a-propos.webp       Accueil public : section « À propos »
+  lecture.webp        Espace lecteur : page « Mes bibliothèques »
+  catalogue.webp      Espace lecteur : en-tête d'une bibliothèque (accueil, catalogue, prêts)
+  baobab-arbre.webp   Connexion / inscription (écran large)
+  baobab-grove.webp   Connexion / inscription (téléphone) et bandeau de fin de page
+
+POUR REMPLACER UNE PHOTO
+  - Garde exactement le même nom de fichier, au format WebP, moins de 150 Ko.
+  - Vérifie la licence et mets à jour CREDITS.md (source, auteur, licence).
+  - N'utilise la photo d'un lieu réel que s'il s'agit bien de ce lieu, avec son accord.

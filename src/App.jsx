@@ -6,6 +6,7 @@ import Login from './pages/Login'
 const Register = lazy(() => import('./pages/Register'))
 const ChangePassword = lazy(() => import('./pages/ChangePassword'))
 const Libraries = lazy(() => import('./pages/Libraries'))
+const PublicHome = lazy(() => import('./pages/PublicHome'))
 const Explore = lazy(() => import('./pages/Explore'))
 const LibrarySpace = lazy(() => import('./pages/LibrarySpace'))
 const LibraryHome = lazy(() => import('./pages/LibraryHome'))
@@ -28,6 +29,13 @@ function Protected({ children }) {
   return <Layout><Suspense fallback={<Loading />}>{children}</Suspense></Layout>
 }
 
+// Visiteur : page publique. Personne connectée : son espace habituel.
+function Root() {
+  const { user, status } = useAuth()
+  if (status === 'loading') return <div className="auth-page"><Loading /></div>
+  if (!user) return <PublicHome />
+  return <Protected><Libraries /></Protected>
+}
 export default function App() {
   return (
     <Suspense fallback={<div className="auth-page"><Loading /></div>}>
@@ -35,7 +43,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/password" element={<ChangePassword />} />
-      <Route path="/" element={<Protected><Libraries /></Protected>} />
+      <Route path="/" element={<Root />} />
       <Route path="/explore" element={<Protected><Explore /></Protected>} />
       <Route path="/l/:memberId" element={<Protected><LibrarySpace /></Protected>}>
         <Route index element={<LibraryHome />} />

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { get, post } from '../api'
-import { Badge, Empty, ErrorBox, Field, Loading, PageHeader, rows, useAction, useFetch } from '../ui'
+import { Badge, Empty, ErrorBox, Field, Loading, rows, useAction, useFetch } from '../ui'
+import PageBanner from '../PageBanner'
 
 const STATUS_HELP = {
   PENDING: "Demande envoyée : en attente de validation par la bibliothèque.",
@@ -25,7 +26,7 @@ export default function Libraries() {
 
   return (
     <>
-      <PageHeader title="Mes bibliothèques" subtitle="Les bibliothèques où vous êtes inscrit" />
+      <PageBanner title="Mes bibliothèques" subtitle="Les bibliothèques où vous êtes inscrit" image="/images/lecture.webp" />
       {loading && <Loading />}
       <ErrorBox>{error}</ErrorBox>
       {data && (list.length === 0 ? (

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { get, post } from '../api'
-import { Badge, Empty, ErrorBox, Loading, PageHeader, Pager, rows, useAction, useDebounced, useFetch } from '../ui'
+import { Badge, Empty, ErrorBox, Loading, Pager, rows, useAction, useDebounced, useFetch } from '../ui'
+import PageBanner from '../PageBanner'
 
 export default function Explore() {
   const [q, setQ] = useState('')
@@ -17,7 +18,7 @@ export default function Explore() {
 
   return (
     <>
-      <PageHeader title="Explorer" subtitle="Bibliothèques et espaces de coworking" />
+      <PageBanner title="Explorer" subtitle="Bibliothèques et espaces de coworking" image="/images/bibliotheques.webp" />
       <div className="toolbar"><input type="search" placeholder="Nom ou ville…" value={q} onChange={(e) => { setQ(e.target.value); setPage(1) }} /></div>
       <ErrorBox>{action.error || error}</ErrorBox>
       {loading && <Loading />}
